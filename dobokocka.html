@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+                                                                                                                        initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>dobókockák</title>
+    <style>
+      .container {
+        max-width: 800px;
+        height: 600px;
+      }
+      .col {
+        height: 60px;
+      }
+      .gomb {
+        height: 40px;
+      }
+      .kocka {
+        width: 800px;
+        height: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container text-center">
+      <h2 class="mt-4">Dobókockák</h2>
+      <div class="class cube">
+        <i class="fa-solid fa-dice-one mt-4 m-3 fa-2xl"></i>
+        <i class="fa-solid fa-dice-two mt-4 m-3 fa-2xl"></i>
+        <i class="fa-solid fa-dice-three mt-4 m-3 fa-2xl"></i>
+        <i class="fa-solid fa-dice-four mt-4 m-3 fa-2xl"></i>
+        <i class="fa-solid fa-dice-five mt-4 m-3 fa-2xl"></i>
+        <i class="fa-solid fa-dice-six mt-4 m-3 fa-2xl"></i>
+      </div>
+      <button id="ot" class="col-2 bg-success rounded mt-4 m-3 gomb" onclick="dob()">Guríts</button>
+      <button class="col-2 bg-success rounded mt-4 m-3 gomb" onclick="uj()">Új játék</button>
+      <div class="border border-secondary rounded kocka mt-4">
+        <p class="text-left font-weight-bold">Dobások:</p>
+        <div id="kocka"></div>
+      </div>
+    </div>
+
+    <script>
+      let one = `<i class="fa-solid fa-dice-one mt-4 m-3 fa-2xl"></i>`;
+      let two = `<i class="fa-solid fa-dice-two mt-4 m-3 fa-2xl"></i>`;
+      let three = `<i class="fa-solid fa-dice-three mt-4 m-3 fa-2xl"></i>`;
+      let four = `<i class="fa-solid fa-dice-four mt-4 m-3 fa-2xl"></i>`;
+      let five = `<i class="fa-solid fa-dice-five mt-4 m-3 fa-2xl"></i>`;
+      let six = `<i class="fa-solid fa-dice-six mt-4 m-3 fa-2xl"></i>`;
+
+      let tomb = [one, two, three, four, five, six];
+
+      let dobas = [];
+
+      let kockak = [];
+
+      let dis = document.getElementById("ot");
+      dis.disabled= false
+
+      function dob() {
+        kockak = tomb[Math.floor(Math.random() * tomb.length)];
+        document.getElementById("kocka").innerHTML = kockak;
+        dobas.push(kockak);
+
+        if (dobas.length == 5) {
+          dis.disabled = !dis.disabled;
+          document.getElementById("kocka").innerHTML = dobas;
+        }
+      }
+    function uj(){
+        dis.disabled = false;
+        document.getElementById("kocka").innerHTML = ""
+        dobas.length=0
+      }
+    </script>
+  </body>
+</html>
